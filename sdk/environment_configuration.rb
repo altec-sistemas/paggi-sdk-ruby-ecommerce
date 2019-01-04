@@ -1,4 +1,4 @@
-require '../sdk/token_validation'
+require_relative 'token_validation'
 require 'jwt'
 # static class for environment setting
 class EnvironmentConfiguration

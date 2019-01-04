@@ -1,4 +1,4 @@
-require '../sdk/environment_configuration'
+require_relative '../sdk/environment_configuration'
 
 RSpec.describe EnvironmentConfiguration do
   describe '#set_partner_id_by_token' do
