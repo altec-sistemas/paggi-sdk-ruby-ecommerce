@@ -1,4 +1,4 @@
-require '../sdk/environment_configuration.rb'
+require '../sdk/environment_configuration'
 
 RSpec.describe EnvironmentConfiguration do
   describe '#set_partner_id_by_token' do
@@ -25,12 +25,12 @@ RSpec.describe EnvironmentConfiguration do
   describe '#set_token' do
     context 'when there is a valid token' do
       it 'should set token and return true' do
-        expect(EnvironmentConfiguration.set_token('')).to eq true
+        expect(EnvironmentConfiguration.set_token(ENV['TOKEN'])).to eq true
       end
     end
     context 'when there is no valid token' do
       it 'should return false, as token was not valid to be set' do
-        expect(EnvironmentConfiguration.set_token('')).to eq false
+        expect(EnvironmentConfiguration.set_token(ENV['INVALIDTOKEN'])).to eq false
       end
     end
   end
@@ -42,6 +42,7 @@ RSpec.describe EnvironmentConfiguration do
     end
     context 'when environment is not staging or production' do
       it 'should return an error message warning about the environment' do
+        expect(EnvironmentConfiguration.set_environment('Testes')).to eq('O ambiente pode ser apenas Staging ou Prod')
       end
     end
   end

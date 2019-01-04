@@ -1,4 +1,4 @@
-require '../sdk/token_validation.rb'
+require '../sdk/token_validation'
 
 RSpec.describe TokenValidation do
   describe '#is_valid_token' do

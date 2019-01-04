@@ -1,4 +1,4 @@
-require 'token_validation.rb'
+require '../sdk/token_validation'
 require 'jwt'
 # static class for environment setting
 class EnvironmentConfiguration
