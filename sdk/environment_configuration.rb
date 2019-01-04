@@ -23,5 +23,10 @@ class EnvironmentConfiguration
     true
   end
 
-  def self.set_environment(env); end
+  def self.set_environment(env)
+    env.upcase!
+    return env if %w[STAGING PROD].include?(env)
+
+    'O ambiente pode ser apenas Staging ou Prod'
+  end
 end
