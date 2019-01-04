@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    httpi (2.4.4)
+      rack
+      socksify
+    json (2.1.0)
+    jwt (2.1.0)
+    rack (2.0.6)
+    socksify (1.7.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  httpi!
+  json!
+  jwt!
+
+BUNDLED WITH
+   1.17.1
