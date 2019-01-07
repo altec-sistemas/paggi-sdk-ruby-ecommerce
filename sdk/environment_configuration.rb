@@ -6,6 +6,7 @@ class EnvironmentConfiguration
   @@partner_id = nil
   @@token = nil
 
+  # sets token as an environment variable
   def self.set_token(token)
     return false unless TokenValidation.valid_token?(token)
 
@@ -14,8 +15,16 @@ class EnvironmentConfiguration
     true
   end
 
-  def self.set_partner_id_by_token(token); end
+  # gets partnerid from token and sets partnerid
+  def self.set_partner_id_by_token(token)
+    return false unless TokenValidation.valid_token?(token)
 
+    decoded_token = JWT.decode(token, nil, false)
+    @@partner_id = decoded_token[0]['permissions'][0]['partner_id']
+    true
+  end
+
+  # gets partnerid externally and sets it to @@partner_id
   def self.set_partner_id_by_partner_id(p_id)
     return false if p_id.nil? || (p_id == '')
 
@@ -23,10 +32,13 @@ class EnvironmentConfiguration
     true
   end
 
+  # validates and sets the environment
   def self.set_environment(env)
     env.upcase!
-    return env if %w[STAGING PROD].include?(env)
-
+    if %w[STAGING PROD].include?(env)
+      @@environment = env
+      return env
+    end
     'O ambiente pode ser apenas Staging ou Prod'
   end
 end

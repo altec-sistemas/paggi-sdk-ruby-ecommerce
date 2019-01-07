@@ -4,21 +4,19 @@ RSpec.describe EnvironmentConfiguration do
   describe '#set_partner_id_by_token' do
     context 'when token is valid' do
       it 'should set partner_id on variable and return true' do
-        # check this out later
+        expect(EnvironmentConfiguration.set_partner_id_by_token(ENV['TOKEN'])).to eq true
       end
     end
     context 'when token is invalid' do
       it 'should return false' do
-      end
-    end
-    context 'when token is valid , but has no partner id' do
-      it 'should return false' do
+        expect(EnvironmentConfiguration.set_partner_id_by_token(ENV['INVALIDTOKEN'])).to eq false
       end
     end
   end
   describe '#set_partner_id_by_partner_id' do
     context 'when argument is not empty or nil' do
       it 'should set partner_id and return true' do
+        expect(EnvironmentConfiguration.set_partner_id_by_partner_id(ENV['PARTNERID'])).to eq true
       end
     end
   end

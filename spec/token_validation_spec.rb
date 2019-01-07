@@ -7,7 +7,7 @@ RSpec.describe TokenValidation do
         expect(TokenValidation.valid_token?(ENV['TOKEN'])).to eq(true)
       end
     end
-    context 'when there is not valid' do
+    context 'when token is not valid' do
       it 'should return false' do
         expect(TokenValidation.valid_token?(ENV['INVALIDTOKEN'])).to eq(false)
       end
