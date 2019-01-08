@@ -1,6 +1,7 @@
 require_relative '../sdk/environment_configuration'
 
 RSpec.describe EnvironmentConfiguration do
+
   describe '#set_partner_id_by_token' do
     context 'when token is valid' do
       it 'should set partner_id on variable and return true' do
@@ -13,6 +14,7 @@ RSpec.describe EnvironmentConfiguration do
       end
     end
   end
+
   describe '#set_partner_id_by_partner_id' do
     context 'when argument is not empty or nil' do
       it 'should set partner_id and return true' do
@@ -20,6 +22,7 @@ RSpec.describe EnvironmentConfiguration do
       end
     end
   end
+
   describe '#set_token' do
     context 'when there is a valid token' do
       it 'should set token and return true' do
@@ -32,6 +35,7 @@ RSpec.describe EnvironmentConfiguration do
       end
     end
   end
+
   describe '#set_environment' do
     context 'when environment is staging or production' do
       it 'should return the environment the SDK is on' do
