@@ -5,9 +5,10 @@ class TokenValidation
   def self.valid_token?(token)
     begin
       decoded_token = JWT.decode(token, nil, false)
-    rescue
-      false
+    rescue => exception
+      return false
     end
+
     return false unless decoded_token[0].key?('permissions')
 
     partner_id = decoded_token[0]['permissions'][0]['partner_id']
@@ -17,11 +18,7 @@ class TokenValidation
   end
 
   def self.expired_token?(token)
-    begin
-      decoded_token = JWT.decode(token, nil, false)
-    rescue
-      false
-    end
+    decoded_token = JWT.decode(token, nil, false)
     expiration = decoded_token[0]['exp']
     now = Time.now.to_i
     return true if expiration - now <= 0
@@ -30,11 +27,7 @@ class TokenValidation
   end
 
   def self.expiring_token?(token)
-    begin
-      decoded_token = JWT.decode(token, nil, false)
-    rescue
-      false
-    end
+    decoded_token = JWT.decode(token, nil, false)
     expiration = decoded_token[0]['exp']
     now = Time.now.to_i
     return true if expiration - now <= 2_592_000
