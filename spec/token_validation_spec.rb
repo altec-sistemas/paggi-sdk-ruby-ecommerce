@@ -1,5 +1,6 @@
 require_relative '../sdk/token_validation'
 
+# Tests for class responsible for Token validation
 RSpec.describe TokenValidation do
   describe '#is_valid_token' do
     context 'when token is valid' do
